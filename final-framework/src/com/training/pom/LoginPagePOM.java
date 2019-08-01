@@ -76,4 +76,22 @@ private WebElement loginLogoBtn;
 		public void clickContinueBtn(){
 			this.continueBtn.click();
 		}
+		//1.Click on User Icon dropdown
+
+		@FindBy(xpath="//span[contains(text(),'Sonam Dutta')]")
+        private WebElement myAccountBtn;
+		
+		public void clickMyAccountBtn(){
+			this.myAccountBtn.click();
+		}
+		//2. Click on Order History link
+        @FindBy(xpath="//div[@id=\"top-links1\"]/ul/li[3]/ul/li[2]/a")
+        private WebElement orderHistoryBtn;
+		
+		public void clickOrderHistoryBtn(){
+			this.orderHistoryBtn.click();
+		}
+		
+		
+		
 }

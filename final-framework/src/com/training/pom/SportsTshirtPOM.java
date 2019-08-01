@@ -1,5 +1,7 @@
 package com.training.pom;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -31,8 +33,9 @@ public class SportsTshirtPOM {
 	@FindBy(xpath="//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']")
 	private WebElement cartIcon;
 	public void clickCartIcon() {
-		Actions act = new Actions(driver);
-	    act.moveToElement(this.cartIcon).build().perform();
+		this.cartIcon.click();
+		//Actions act = new Actions(driver);
+	    //act.moveToElement(this.cartIcon).build().perform();
 	}
 	
 	@FindBy(xpath="//*[@id=\"cart\"]/ul/li[2]/div/p/a[1]/strong")
@@ -45,38 +48,11 @@ public class SportsTshirtPOM {
 	
 	@FindBy(xpath="//a[@class='btn btn-primary']")
 	private WebElement checkoutBtn;
-
+    
 	public void clickCheckoutBtn() {
 		this.checkoutBtn.click();
+		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		
 		}
 	
-	@FindBy(xpath="//input[@value='guest']")
-	private WebElement guestCheckoutBtn;
-
-	public void clickGuestCheckoutBtn() {
-		this.guestCheckoutBtn.click();
-		
-		}
-	
-	@FindBy(id="button-account")
-	private WebElement continueBtn;
-
-	public void clickContinueBtn() {
-		this.continueBtn.click();
-		
-		}
-	
-	@FindBy(name="firstname")
-	private WebElement firstNameEdt;
-
-	public void sendPassword(String firstName) {
-		this.firstNameEdt.clear();
-		this.firstNameEdt.sendKeys(firstName);
-	} 	
-	
-	
-
 }
-	
-	

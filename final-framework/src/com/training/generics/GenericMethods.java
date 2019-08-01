@@ -3,8 +3,10 @@ package com.training.generics;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * 
@@ -82,4 +84,31 @@ public class GenericMethods {
 	public boolean checkSingleEntry(String locator, String type){
 		return getElementsAsList(locator, type).size() ==1;
 	}
+	
+	public void selectBy(String selectBy, WebElement element, String text, int index) {
+		Select select = new Select(element);
+		switch(selectBy.toUpperCase()) {
+		case "SelectByVisibleText":
+			select.selectByVisibleText(text);
+			break;
+		case "SelectByIndex":
+			select.selectByIndex(index);
+			break;
+		}
+	}
+	
+	public void scrollIntoView(WebElement element)
+    {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    public void jsClick(WebElement element)
+    {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+    public void highlightElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //use executeScript() method and pass the arguments 
+        //Here i pass values based on css style. Yellow background color with solid red color border. 
+        js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+    }
 }

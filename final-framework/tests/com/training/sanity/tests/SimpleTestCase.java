@@ -54,6 +54,7 @@ public class SimpleTestCase {
 	
 	@Test (priority = 1)
 	public void simplePassTest() {
+		try {
 		    homePagePOM.clickAccountLaunch();
 		    homePagePOM.clickRegisterBtn();
 			homePagePOM.sendFirstName("Sonam");
@@ -70,20 +71,30 @@ public class SimpleTestCase {
 			homePagePOM.clickRadioBtn();
 			homePagePOM.clickPrivacyPolicy();
 			homePagePOM.clickContinueBtn();
+			screenShot.captureScreenShot("SFirst");
+		}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	@Test (priority = 2)
 	public void simpleLoginTest() {
-		
+		try {
 		loginPagePOM.clickDrpAccount();
 		loginPagePOM.clickLoginBtn();
 		loginPagePOM.sendEmailAddressEdt("iamsonamani@gmail.com");
 		loginPagePOM.sendPasswordEdt("Mar@2019");
 		loginPagePOM.clickLoginLogoBtn();
+		screenShot.captureScreenShot("Ssecond");
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
 	}
 	
 	@Test (priority = 3)
 	public void simplePasswordRecoverTest() {
+		try {
 		loginPagePOM.clickDrpAccount();
 		loginPagePOM.clickLoginBtn();
 		loginPagePOM.sendEmailAddressEdt("iamsonamani@gmail.com");
@@ -92,6 +103,10 @@ public class SimpleTestCase {
 		loginPagePOM.clickForgotPasswordBtn();
 		loginPagePOM.sendEmailRecoverEdt("iamsonamani@gmail.com");
 		loginPagePOM.clickContinueBtn();
-	}
+		screenShot.captureScreenShot("SThird");
+	}catch(Exception e) {
+		e.printStackTrace();
 
+}
+}
 }

@@ -5,18 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import com.training.generics.GenericMethods;
 import com.trianing.waits.WaitTypes;
 
 
 public class HomePagePOM {
 	private WebDriver driver; 
+	private GenericMethods genericMethods;
 	private WaitTypes types = new WaitTypes(driver);
 
 	public HomePagePOM(WebDriver driver) { //constructor parametrization
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
-	
+	//Click on My Account
 	@FindBy(xpath="//a[@title='My Account']")
 	private WebElement accountLaunch;
 	
@@ -24,13 +27,22 @@ public class HomePagePOM {
 		types.waitForElement(this.accountLaunch, 30);
 		this.accountLaunch.click();
 	}
+	//Register into account
 	@FindBy(xpath="//a[text()='Register']")
 	private WebElement registerBtn; 
 
 	public void clickRegisterBtn() {
 		this.registerBtn.click();
 	}
+	//Login into account
+	@FindBy(xpath="//a[contains(text(),'Login')]")
+	private WebElement loginBtn; 
 
+	public void clickLoginBtn() {
+		this.loginBtn.click();
+	}
+	
+	
 	@FindBy(name="firstname")
 	private WebElement firstNameEdt;
 
@@ -91,8 +103,8 @@ public class HomePagePOM {
 
 	public void sendCountryName(String countryName) {
 		WebElement element = this.countryNameEdt ;
-		Select selCountryName = new Select (element);
-		selCountryName.selectByVisibleText(countryName);
+		genericMethods = new GenericMethods(driver);
+		genericMethods.selectBy("SelectByVisibleText", element, countryName, -1);
 	} 	 
 
 	@FindBy(id="input-zone")
@@ -100,8 +112,8 @@ public class HomePagePOM {
 
 	public void sendStateName(String stateName) {
 		WebElement element = this.stateNameEdt;
-		Select selStateName = new Select (element);
-		selStateName.selectByVisibleText(stateName);
+		genericMethods = new GenericMethods(driver);
+		genericMethods.selectBy("SelectByVisibleText", element, stateName, -1);
 	} 	
 
 
