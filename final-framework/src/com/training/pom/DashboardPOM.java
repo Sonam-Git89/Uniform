@@ -32,8 +32,25 @@ public class DashboardPOM {
 
 	public void clickProductIconBtn() {
 		this.productIcon.click();
-
 	}
-}
+		
+		// click on Sales icon
+		@FindBy(xpath="//li[@id=\"catalog\"]/a")
+		private WebElement salesIcon;
+
+		public void clickSalesIcon() {
+			this.salesIcon.click();
+		}
+			
+// click on Returns link
+			@FindBy(xpath="//li[@id=\"reports\"]/ul/li[1]/ul/li[4]/a")
+			private WebElement returnsIcon;
+
+			public void clickReturnsIcon() {
+				this.returnsIcon.click();
+			}
+			
+	}
+
 
 

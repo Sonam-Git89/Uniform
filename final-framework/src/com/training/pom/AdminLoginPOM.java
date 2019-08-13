@@ -39,6 +39,9 @@ private WebElement loginBtn;
 
 public void clickLoginBtn() {
 	this.loginBtn.click();
+	
+	
+	
 
 }
 

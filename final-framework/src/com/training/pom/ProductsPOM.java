@@ -29,6 +29,7 @@ public class ProductsPOM {
 		//Enter Valid credentials in Product Name of General tab
 		@FindBy(name="product_description[1][name]")
 		private WebElement productNameEdt;
+		
 
 		public void sendProductNameEdt(String productName) {
 			this.productNameEdt.clear();
@@ -155,7 +156,13 @@ public class ProductsPOM {
 			genericMethods = new GenericMethods(driver);
 			genericMethods.jsClick(startDate);
 		}
-	
+	//click on date end calendar
+		@FindBy(xpath="//input[@placeholder='Date End']/following-sibling::span//i[@class='fa fa-calendar']")
+private WebElement endCalBtn;
+		
+		public void clickEndCalBtn() {
+			this.endCalBtn.click();
+		}
 		
 		//Select valid end date as current date+one day
 		@FindBy(xpath="//div[@class='bootstrap-datetimepicker-widget dropdown-menu picker-open top']//td[@class='day active today']/following-sibling::td")
